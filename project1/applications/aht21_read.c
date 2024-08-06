@@ -1,16 +1,5 @@
-/*
- * Copyright (c) 2006-2024, RT-Thread Development Team
- *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Change Logs:
- * Date           Author       Notes
- * 2024-07-23     Wangyuqiang  the first version
- */
-
 #include <rtthread.h>
 #include <rtdevice.h>
-
 #include "aht10.h"
 
 #define DBG_TAG "aht10"
@@ -61,4 +50,4 @@ int aht10_thread_port(void)
 
     return RT_EOK;
 }
-INIT_DEVICE_EXPORT(aht10_thread_port);
+//INIT_DEVICE_EXPORT(aht10_thread_port);

@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2006-2018, RT-Thread Development Team
- *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Change Logs:
- * Date           Author       Notes
- * 2018-08-20     Ernest Chen  the first version
- */
-
 #include <rtthread.h>
 #include <rthw.h>
 #include <rtdevice.h>
@@ -65,4 +55,4 @@ int ap3216c_read(void)
 	}
 	return RT_EOK;
 }
-INIT_APP_EXPORT(ap3216c_read);
+//INIT_APP_EXPORT(ap3216c_read);
