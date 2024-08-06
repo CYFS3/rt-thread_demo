@@ -405,6 +405,8 @@
 
 /* sensors drivers */
 
+#define PKG_USING_AHT10
+#define PKG_USING_AHT10_LATEST_VERSION
 #define PKG_USING_AP3216C
 #define PKG_USING_AP3216C_LATEST_VERSION
 /* end of sensors drivers */
@@ -491,6 +493,7 @@
 
 #define BSP_USING_USB_TO_USART
 #define BSP_USING_RW007_WLAN
+#define BSP_USING_AHT21
 #define BSP_USING_AP3216C
 /* end of Onboard Peripheral Drivers */
 
@@ -505,6 +508,9 @@
 #define BSP_USING_I2C2
 #define BSP_I2C2_SCL_PIN 81
 #define BSP_I2C2_SDA_PIN 80
+#define BSP_USING_I2C3
+#define BSP_I2C3_SCL_PIN 64
+#define BSP_I2C3_SDA_PIN 65
 /* end of On-chip Peripheral Drivers */
 
 /* Board extended module Drivers */
