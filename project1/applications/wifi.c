@@ -1,6 +1,7 @@
 #include <rtthread.h>
 #include <rtdevice.h>
 
+// wifi join entry
 void wifi_join_init(void * parameter)
 {
 	rt_thread_mdelay(1000);
@@ -10,7 +11,7 @@ void wifi_join_init(void * parameter)
 	system(arr);
 
 }
-
+// wifi join thrad
 int wifi_join(void)
 {
 	rt_thread_t tid;

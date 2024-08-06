@@ -405,6 +405,8 @@
 
 /* sensors drivers */
 
+#define PKG_USING_AP3216C
+#define PKG_USING_AP3216C_LATEST_VERSION
 /* end of sensors drivers */
 
 /* touch drivers */
@@ -489,6 +491,7 @@
 
 #define BSP_USING_USB_TO_USART
 #define BSP_USING_RW007_WLAN
+#define BSP_USING_AP3216C
 /* end of Onboard Peripheral Drivers */
 
 /* On-chip Peripheral Drivers */
