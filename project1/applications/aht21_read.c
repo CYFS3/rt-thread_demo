@@ -6,10 +6,11 @@
 #define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 #include "aht21_read.h"
-rt_mailbox_t aht10_mb;
+aht21_data aht21;
+rt_mutex_t ant10_mut = RT_NULL;
 static void aht10_entry(void *parameter)
 {
-    aht21_data aht21;
+   
     aht10_device_t dev;
     const char *i2c_bus_name = "i2c3";
     int count = 0;
@@ -20,19 +21,25 @@ static void aht10_entry(void *parameter)
         LOG_E("The sensor initializes failure");
     }
     LOG_I("AHT10 has been initialized!");
-    aht10_mb = rt_mb_create("aht10_mb", 10, RT_IPC_FLAG_FIFO);
+    ant10_mut = rt_mutex_create("aht10",RT_IPC_FLAG_PRIO);
+    if (ant10_mut == RT_NULL)
+    {
+        LOG_E("The mutex initializes failure");
+    }
+    
     while (1)
     {
+        rt_mutex_take(ant10_mut, RT_WAITING_FOREVER);
         aht21.humidity = aht10_read_humidity(dev);
         aht21.temperature = aht10_read_temperature(dev);
-        rt_mb_send(aht10_mb, (rt_ubase_t)&aht21);
+        rt_mutex_release(ant10_mut);
         rt_thread_mdelay(1000);
     }
 }
 
 int aht10_thread_port(void)
 {
-    rt_thread_t res = rt_thread_create("aht10", aht10_entry, RT_NULL, 1024, 8, 50);
+    rt_thread_t res = rt_thread_create("aht10", aht10_entry, RT_NULL, 768, 8, 50);
     if(res == RT_NULL)
     {
         LOG_E("aht10 thread create failed!");

@@ -5,6 +5,6 @@ typedef struct
 	float humidity;
 	float temperature;
 } aht21_data;
-extern rt_mailbox_t aht10_mb;
-
+extern rt_mutex_t ant10_mut;
+extern aht21_data aht21;
 #endif // __AHT21_READ_H__

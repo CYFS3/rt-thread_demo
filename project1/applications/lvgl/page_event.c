@@ -5,6 +5,8 @@
 #include <page_event.h>
 #include <dfs_posix.h>
 #include <stdio.h>
+#include "aht21_read.h"
+#include "ap3216_read.h"
 #define DBG_ENABLE
 #define DBG_SECTION_NAME "page_event"
 #define DBG_LEVEL DBG_LOG
@@ -17,6 +19,11 @@ static void main_page_entry(void * parameter)
 {
 	struct tm *Time;
 	time_t now;
+	char buf[32];
+	while (ap3216_mut == RT_NULL || ant10_mut == RT_NULL)
+	{
+		rt_thread_mdelay(500);
+	}
 	while (1)
 	{
 		now = time(RT_NULL) + 28800;
@@ -30,14 +37,24 @@ static void main_page_entry(void * parameter)
 		Clock.sec = Time->tm_sec;
 		lv_label_set_text_fmt(guider_ui.screen_label_1, "%d:%d:%d",Clock.hour, Clock.min, Clock.sec);
 		lv_label_set_text_fmt(guider_ui.screen_label_5, "%d-%d-%d",Clock.year, Clock.month, Clock.date);
-		rt_thread_mdelay(500);
+		rt_mutex_take(ap3216_mut, RT_WAITING_FOREVER);
+		sprintf(buf,"%.2f",ap3216.brightness);
+       	lv_label_set_text(guider_ui.screen_label_4, buf);
+        rt_mutex_release(ap3216_mut);
+		rt_mutex_take(ant10_mut, RT_WAITING_FOREVER);
+		sprintf(buf,"%.2f",aht21.temperature);
+		lv_label_set_text(guider_ui.screen_label_2, buf);
+		sprintf(buf,"%.2f",aht21.humidity);
+		lv_label_set_text(guider_ui.screen_label_3, buf);
+        rt_mutex_release(ant10_mut);
+		rt_thread_mdelay(1000);
 	}
 	
 }
 
 void date_thread_crearte(void)
 {
-	data_thread =  rt_thread_create("date_thread", main_page_entry, RT_NULL, 1024, 10, 20);
+	data_thread =  rt_thread_create("date_thread", main_page_entry, RT_NULL, 1536, 10, 5);
 	if(data_thread != RT_NULL)
 	{
 		rt_thread_startup(data_thread);

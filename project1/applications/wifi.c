@@ -34,5 +34,5 @@ int wifi_join(void)
 	}
 	return -RT_ERROR;
 }
-//INIT_APP_EXPORT(wifi_join);
+INIT_APP_EXPORT(wifi_join);
 

@@ -138,19 +138,23 @@ void mqtt_example_main(void *parameter)
     //     IOT_MQTT_Destroy(&pclient);
         
     // }
-    aht21_data *aht21;
-    ap3216_data *ap3216;
     char payload[256];
+    while (ap3216_mut == RT_NULL || ant10_mut == RT_NULL)
+    {
+        rt_thread_mdelay(500);
+    }
     while (1) 
     {
-        rt_mb_recv(aht10_mb, (rt_ubase_t *)(&aht21), RT_WAITING_FOREVER);
-        rt_mb_recv(ap3216_mb, (rt_ubase_t *)(&ap3216), RT_WAITING_FOREVER);
-        //rt_kprintf("aht21->humidity:%.2f\n,aht21->temperature:%.2f\n,ap3216->brightness:%.2f\n,ap3216->ps_data:%d\n",aht21->humidity,aht21->temperature,ap3216->brightness,ap3216->ps_data);
+        
+        rt_mutex_take(ap3216_mut, RT_WAITING_FOREVER);
+        rt_mutex_take(ant10_mut, RT_WAITING_FOREVER);
         HAL_Snprintf(payload, sizeof(payload), "{\"params\":{\"pa_data\":%d,\"LightLux\":%.2f,\"CurrentHumidity\":%.2f,\"CurrentTemperature\":%.2f}}", 
-        ap3216->ps_data,
-        ap3216->brightness,
-        aht21->humidity,
-        aht21->temperature);
+        ap3216.ps_data,
+        ap3216.brightness,
+        aht21.humidity,
+        aht21.temperature);
+        rt_mutex_release(ap3216_mut);
+        rt_mutex_release(ant10_mut);
         res = example_publish(pclient,payload);       
         IOT_MQTT_Yield(pclient, 200);
         rt_thread_mdelay(1000);
@@ -169,4 +173,4 @@ int mqtt_init(void)
     }
     return -RT_ERROR;
 }
-//INIT_APP_EXPORT(mqtt_init);
+INIT_APP_EXPORT(mqtt_init);
