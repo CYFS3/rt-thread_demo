@@ -334,9 +334,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls />
-              <Define>__STDC_LIMIT_MACROS, RT_USING_LIBC, STM32F407xx, RT_USING_ARMLIBC, USE_HAL_DRIVER, __RTTHREAD__, __CLK_TCK=RT_TICK_PER_SECOND</Define>
+              <Define>RT_USING_LIBC, RT_USING_ARMLIBC, USE_HAL_DRIVER, STM32F407xx, __RTTHREAD__, __STDC_LIMIT_MACROS, __CLK_TCK=RT_TICK_PER_SECOND</Define>
               <Undefine />
-              <IncludePath>..\..\..\components\libc\compilers\common\include;..\libraries\HAL_Drivers\CMSIS\Include;..\libraries\HAL_Drivers\drivers\config;..\..\..\libcpu\arm\common;.;..\..\..\components\finsh;..\..\..\components\drivers\include;..\..\..\components\libc\posix\io\eventfd;..\..\..\components\drivers\include;..\..\..\components\libc\compilers\common\extension\fcntl\octal;..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;..\..\..\libcpu\arm\cortex-m4;..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;board;..\..\..\components\libc\posix\io\epoll;..\..\..\components\libc\posix\io\poll;applications;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\libraries\HAL_Drivers\drivers;board\CubeMX_Config\Inc;..\..\..\include;..\libraries\HAL_Drivers;..\..\..\components\libc\compilers\common\extension;board\ports;..\..\..\components\libc\posix\ipc</IncludePath>
+              <IncludePath>rt-thread\components\net\at\include;packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\client;rt-thread\components\net\at\at_socket;rt-thread\components\net\sal\include\socket\sys_socket;rt-thread\components\dfs\dfs_v1\filesystems\devfs;rt-thread\components\net\lwip\lwip-2.0.3\src\include;packages\rw007-v2.1.0\inc;rt-thread\components\net\netdev\include;rt-thread\components\dfs\dfs_v1\include;rt-thread\components\drivers\include;packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model;rt-thread\components\net\sal\include\dfs_net;packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt;packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\finsh;packages\aht10-latest\inc;libraries\HAL_Drivers\drivers\config;rt-thread\components\net\sal\impl;packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_sign;rt-thread\components\drivers\include;rt-thread\include;packages\rw007-v2.1.0;rt-thread\components\net\sal\include\socket;rt-thread\components\libc\compilers\common\include;rt-thread\components\libc\posix\io\eventfd;rt-thread\components\drivers\include;rt-thread\components\drivers\include;board\CubeMX_Config\Inc;packages\cJSON-v1.7.17;rt-thread\components\libc\compilers\common\extension\fcntl\octal;libraries\HAL_Drivers\CMSIS\Include;libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;libraries\HAL_Drivers\drivers;rt-thread\components\libc\posix\io\epoll;rt-thread\components\libc\compilers\common\extension;packages\ali-iotkit-v3.0.2\iotkit-embedded\wrappers;rt-thread\components\drivers\spi;rt-thread\components\drivers\wlan;rt-thread\components\libc\posix\io\poll;rt-thread\components\net\sal\include;packages\ap3216c-latest;rt-thread\components\net\lwip\lwip-2.0.3\src\include\netif;rt-thread\components\net\lwip\port;applications;rt-thread\components\drivers\include;board;rt-thread\libcpu\arm\cortex-m4;rt-thread\components\drivers\audio;libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;rt-thread\libcpu\arm\common;rt-thread\components\libc\posix\ipc;packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl;rt-thread\components\drivers\include;board\ports;.;packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\server;libraries\HAL_Drivers;rt-thread\components\net\lwip\lwip-2.0.3\src\include\ipv4</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -378,7 +378,338 @@
       </TargetOption>
       <Groups>
         <Group>
+          <GroupName>aht10</GroupName>
+          <Files>
+            <File>
+              <FileName>aht10.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\aht10-latest\src\aht10.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ali-iotkit</GroupName>
+          <Files>
+            <File>
+              <FileName>infra_compat.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_compat.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>MQTTPacket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl\MQTTPacket.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_api.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>iotx_cm_mqtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\iotx_cm_mqtt.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_log.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_log.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_string.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_string.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_timer.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_opt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_opt.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dev_sign_mqtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_sign\dev_sign_mqtt.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>HAL_OS_rtthread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\ports\rtthread\HAL_OS_rtthread.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>HAL_UDP_rtthread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\ports\rtthread\HAL_UDP_rtthread.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>MQTTUnsubscribeClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl\MQTTUnsubscribeClient.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_manager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_manager.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_ota.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_ota.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_prt_nwk_payload.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_prt_nwk_payload.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_msg_process.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_msg_process.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_net.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_net.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>MQTTSerializePublish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl\MQTTSerializePublish.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_message_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_message_cache.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\client\dm_client.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_sha256.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_sha256.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_utils.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>iotx_cm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\iotx_cm.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_cjson.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_cjson.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_log_report.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_log_report.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>iotx_mqtt_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl\iotx_mqtt_client.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_report.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_report.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>impl_linkkit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\impl_linkkit.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_client_adapter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\client\dm_client_adapter.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>MQTTSubscribeClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl\MQTTSubscribeClient.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wrapper.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\ports\wrapper.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>infra_defs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\infra\infra_defs.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_message.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_message.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>MQTTConnectClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl\MQTTConnectClient.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_ipc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_ipc.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>MQTTDeserializePublish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\impl\MQTTDeserializePublish.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>HAL_TCP_rtthread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\ports\rtthread\HAL_TCP_rtthread.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_fota.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_fota.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dm_cota.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\dev_model\dm_cota.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>mqtt_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ali-iotkit-v3.0.2\iotkit-embedded\src\mqtt\mqtt_api.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ap3216c</GroupName>
+          <Files>
+            <File>
+              <FileName>ap3216c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ap3216c-latest\ap3216c.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Applications</GroupName>
+          <Files>
+            <File>
+              <FileName>mqtt_clinet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\mqtt_clinet.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ap3216_read.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\ap3216_read.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wifi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\wifi.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>aht21_read.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\aht21_read.c</FilePath>
+            </File>
+          </Files>
           <Files>
             <File>
               <FileName>main.c</FileName>
@@ -388,61 +719,109 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>AT</GroupName>
+          <Files>
+            <File>
+              <FileName>at_socket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\at\at_socket\at_socket.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>at_cli.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\at\src\at_cli.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>at_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\at\src\at_client.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>at_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\at\src\at_utils.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>cJSON</GroupName>
+          <Files>
+            <File>
+              <FileName>cJSON_Utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\cJSON-v1.7.17\cJSON_Utils.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>cJSON.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\cJSON-v1.7.17\cJSON.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Compiler</GroupName>
           <Files>
             <File>
               <FileName>syscall_mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\armlibc\syscall_mem.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\armlibc\syscall_mem.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>syscalls.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\armlibc\syscalls.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\armlibc\syscalls.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>cctype.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\common\cctype.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\common\cctype.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>cstdlib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\common\cstdlib.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\common\cstdlib.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>cstring.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\common\cstring.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\common\cstring.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>ctime.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\common\ctime.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\common\ctime.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>cunistd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\common\cunistd.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\common\cunistd.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>cwchar.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\libc\compilers\common\cwchar.c</FilePath>
+              <FilePath>rt-thread\components\libc\compilers\common\cwchar.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -450,9 +829,66 @@
           <GroupName>DeviceDrivers</GroupName>
           <Files>
             <File>
+              <FileName>audio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\audio\audio.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>audio_pipe.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\audio\audio_pipe.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
               <FileName>device.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\core\device.c</FilePath>
+              <FilePath>rt-thread\components\drivers\core\device.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>hwtimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\hwtimer\hwtimer.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -471,7 +907,7 @@
             <File>
               <FileName>i2c-bit-ops.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\i2c\i2c-bit-ops.c</FilePath>
+              <FilePath>rt-thread\components\drivers\i2c\i2c-bit-ops.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -490,7 +926,7 @@
             <File>
               <FileName>i2c_core.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\i2c\i2c_core.c</FilePath>
+              <FilePath>rt-thread\components\drivers\i2c\i2c_core.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -509,7 +945,7 @@
             <File>
               <FileName>i2c_dev.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\i2c\i2c_dev.c</FilePath>
+              <FilePath>rt-thread\components\drivers\i2c\i2c_dev.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -528,7 +964,7 @@
             <File>
               <FileName>completion_comm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\completion_comm.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\completion_comm.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -547,7 +983,7 @@
             <File>
               <FileName>completion_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\completion_up.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\completion_up.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -566,7 +1002,7 @@
             <File>
               <FileName>condvar.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\condvar.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\condvar.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -585,7 +1021,7 @@
             <File>
               <FileName>dataqueue.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\dataqueue.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\dataqueue.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -604,7 +1040,7 @@
             <File>
               <FileName>pipe.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\pipe.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\pipe.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -623,7 +1059,7 @@
             <File>
               <FileName>ringblk_buf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\ringblk_buf.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\ringblk_buf.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -642,7 +1078,7 @@
             <File>
               <FileName>ringbuffer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\ringbuffer.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\ringbuffer.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -661,7 +1097,7 @@
             <File>
               <FileName>waitqueue.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\waitqueue.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\waitqueue.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -680,7 +1116,7 @@
             <File>
               <FileName>workqueue.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\ipc\workqueue.c</FilePath>
+              <FilePath>rt-thread\components\drivers\ipc\workqueue.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -699,7 +1135,7 @@
             <File>
               <FileName>rt_drv_pwm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\misc\rt_drv_pwm.c</FilePath>
+              <FilePath>rt-thread\components\drivers\misc\rt_drv_pwm.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -718,7 +1154,7 @@
             <File>
               <FileName>pin.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\pin\pin.c</FilePath>
+              <FilePath>rt-thread\components\drivers\pin\pin.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -737,7 +1173,197 @@
             <File>
               <FileName>serial.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\drivers\serial\serial.c</FilePath>
+              <FilePath>rt-thread\components\drivers\serial\serial.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>spi-bit-ops.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\spi\spi-bit-ops.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>spi_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\spi\spi_core.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>spi_dev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\spi\spi_dev.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wlan_cfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\wlan\wlan_cfg.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wlan_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\wlan\wlan_cmd.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wlan_dev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\wlan\wlan_dev.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wlan_lwip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\wlan\wlan_lwip.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wlan_mgnt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\wlan\wlan_mgnt.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wlan_prot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\wlan\wlan_prot.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define>__RT_IPC_SOURCE__</Define>
+                      <Undefine> </Undefine>
+                      <IncludePath> </IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>wlan_workqueue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\wlan\wlan_workqueue.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -757,34 +1383,6 @@
           <GroupName>Drivers</GroupName>
           <Files>
             <File>
-              <FileName>drv_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\HAL_Drivers\drivers\drv_gpio.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>drv_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\HAL_Drivers\drivers\drv_usart.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>drv_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\HAL_Drivers\drv_common.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>startup_stm32f407xx.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>board\CubeMX_Config\Src\stm32f4xx_hal_msp.c</FilePath>
@@ -797,35 +1395,129 @@
               <FilePath>board\board.c</FilePath>
             </File>
           </Files>
+          <Files>
+            <File>
+              <FileName>drv_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\HAL_Drivers\drivers\drv_gpio.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>drv_soft_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\HAL_Drivers\drivers\drv_soft_i2c.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>drv_soft_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\HAL_Drivers\drivers\drv_soft_spi.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>drv_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\HAL_Drivers\drivers\drv_spi.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>drv_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\HAL_Drivers\drivers\drv_usart.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>drv_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\HAL_Drivers\drv_common.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>startup_stm32f407xx.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Filesystem</GroupName>
+          <Files>
+            <File>
+              <FileName>devfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\dfs_v1\filesystems\devfs\devfs.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\dfs_v1\src\dfs.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dfs_file.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\dfs_v1\src\dfs_file.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dfs_fs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\dfs_v1\src\dfs_fs.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dfs_posix.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\dfs_v1\src\dfs_posix.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Finsh</GroupName>
           <Files>
             <File>
-              <FileName>cmd.c</FileName>
+              <FileName>msh_file.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\finsh\cmd.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>msh_parse.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\components\finsh\msh_parse.c</FilePath>
+              <FilePath>rt-thread\components\finsh\msh_file.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>msh.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\finsh\msh.c</FilePath>
+              <FilePath>rt-thread\components\finsh\msh.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>msh_parse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\finsh\msh_parse.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\finsh\cmd.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>shell.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\components\finsh\shell.c</FilePath>
+              <FilePath>rt-thread\components\finsh\shell.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -835,7 +1527,7 @@
             <File>
               <FileName>clock.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\clock.c</FilePath>
+              <FilePath>rt-thread\src\clock.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -854,7 +1546,7 @@
             <File>
               <FileName>components.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\components.c</FilePath>
+              <FilePath>rt-thread\src\components.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -873,7 +1565,7 @@
             <File>
               <FileName>cpu_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\cpu_up.c</FilePath>
+              <FilePath>rt-thread\src\cpu_up.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -892,7 +1584,7 @@
             <File>
               <FileName>idle.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\idle.c</FilePath>
+              <FilePath>rt-thread\src\idle.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -911,7 +1603,7 @@
             <File>
               <FileName>ipc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\ipc.c</FilePath>
+              <FilePath>rt-thread\src\ipc.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -930,7 +1622,7 @@
             <File>
               <FileName>irq.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\irq.c</FilePath>
+              <FilePath>rt-thread\src\irq.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -949,7 +1641,7 @@
             <File>
               <FileName>kstdio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\klibc\kstdio.c</FilePath>
+              <FilePath>rt-thread\src\klibc\kstdio.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -968,7 +1660,7 @@
             <File>
               <FileName>kstring.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\klibc\kstring.c</FilePath>
+              <FilePath>rt-thread\src\klibc\kstring.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -987,7 +1679,7 @@
             <File>
               <FileName>kservice.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\kservice.c</FilePath>
+              <FilePath>rt-thread\src\kservice.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1006,7 +1698,7 @@
             <File>
               <FileName>mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\mem.c</FilePath>
+              <FilePath>rt-thread\src\mem.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1025,7 +1717,7 @@
             <File>
               <FileName>mempool.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\mempool.c</FilePath>
+              <FilePath>rt-thread\src\mempool.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1044,7 +1736,7 @@
             <File>
               <FileName>object.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\object.c</FilePath>
+              <FilePath>rt-thread\src\object.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1063,7 +1755,7 @@
             <File>
               <FileName>scheduler_comm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\scheduler_comm.c</FilePath>
+              <FilePath>rt-thread\src\scheduler_comm.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1082,7 +1774,7 @@
             <File>
               <FileName>scheduler_up.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\scheduler_up.c</FilePath>
+              <FilePath>rt-thread\src\scheduler_up.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1101,7 +1793,7 @@
             <File>
               <FileName>thread.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\thread.c</FilePath>
+              <FilePath>rt-thread\src\thread.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1120,7 +1812,7 @@
             <File>
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\src\timer.c</FilePath>
+              <FilePath>rt-thread\src\timer.c</FilePath>
               <FileOption>
                 <FileArmAds>
                   <Cads>
@@ -1142,35 +1834,35 @@
             <File>
               <FileName>atomic_arm.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\libcpu\arm\common\atomic_arm.c</FilePath>
+              <FilePath>rt-thread\libcpu\arm\common\atomic_arm.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>div0.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\libcpu\arm\common\div0.c</FilePath>
+              <FilePath>rt-thread\libcpu\arm\common\div0.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>showmem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\libcpu\arm\common\showmem.c</FilePath>
+              <FilePath>rt-thread\libcpu\arm\common\showmem.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>context_rvds.S</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\..\libcpu\arm\cortex-m4\context_rvds.S</FilePath>
+              <FilePath>rt-thread\libcpu\arm\cortex-m4\context_rvds.S</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>cpuport.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\libcpu\arm\cortex-m4\cpuport.c</FilePath>
+              <FilePath>rt-thread\libcpu\arm\cortex-m4\cpuport.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1178,156 +1870,577 @@
           <GroupName>Libraries</GroupName>
           <Files>
             <File>
-              <FileName>stm32f4xx_hal_i2c_ex.c</FileName>
+              <FileName>stm32f4xx_hal_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_cec.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_rcc_ex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_rng.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rng.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_pwr_ex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_lptim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_lptim.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_cortex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_cryp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>stm32f4xx_hal_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
-              <FileName>stm32f4xx_hal_tim_ex.c</FileName>
+              <FileName>stm32f4xx_hal_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
-              <FileName>stm32f4xx_hal_pwr.c</FileName>
+              <FileName>stm32f4xx_hal_i2c_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
-              <FileName>stm32f4xx_hal_usart.c</FileName>
+              <FileName>stm32f4xx_hal_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_usart.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
-              <FileName>stm32f4xx_hal_uart.c</FileName>
+              <FileName>stm32f4xx_hal_cec.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
-              <FileName>stm32f4xx_hal_dma_ex.c</FileName>
+              <FileName>stm32f4xx_hal_rng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rng.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
-              <FileName>stm32f4xx_hal_cryp_ex.c</FileName>
+              <FileName>stm32f4xx_hal_i2s_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp_ex.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>stm32f4xx_hal_rcc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c</FilePath>
-            </File>
-          </Files>
-          <Files>
-            <File>
-              <FileName>system_stm32f4xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s_ex.c</FilePath>
             </File>
           </Files>
           <Files>
             <File>
               <FileName>stm32f4xx_hal_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c</FilePath>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>system_stm32f4xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_cryp_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp_ex.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_i2s.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2s.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_lptim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_lptim.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_sai.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_usart.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_cortex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_qspi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_qspi.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_cryp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cryp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_tim_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_pwr_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_rcc_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_sai_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sai_ex.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stm32f4xx_hal_dma_ex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lwIP</GroupName>
+          <Files>
+            <File>
+              <FileName>api_lib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\api_lib.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>api_msg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\api_msg.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>err.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\err.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>netbuf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\netbuf.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>netdb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\netdb.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>netifapi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\netifapi.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>sockets.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\sockets.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>tcpip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\api\tcpip.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ping.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\apps\ping\ping.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>def.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\def.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dns.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\dns.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>inet_chksum.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\inet_chksum.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\init.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ip.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>autoip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\autoip.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dhcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\dhcp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>etharp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\etharp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>icmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\icmp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>igmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\igmp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ip4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\ip4.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ip4_addr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\ip4_addr.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ip4_frag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\ipv4\ip4_frag.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>memp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\memp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>netif.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\netif.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>pbuf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\pbuf.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>raw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\raw.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>stats.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\stats.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\sys.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\tcp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>tcp_in.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\tcp_in.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>tcp_out.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\tcp_out.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>timeouts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\timeouts.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>udp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\core\udp.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ethernet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\netif\ethernet.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>lowpan6.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\lwip-2.0.3\src\netif\lowpan6.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>ethernetif.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\port\ethernetif.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>sys_arch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\lwip\port\sys_arch.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>POSIX</GroupName>
+          <Files>
+            <File>
+              <FileName>poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\libc\posix\io\poll\poll.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>select.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\libc\posix\io\poll\select.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>rw007</GroupName>
+          <Files>
+            <File>
+              <FileName>spi_wifi_rw007.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\rw007-v2.1.0\src\spi_wifi_rw007.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define />
+                      <Undefine> </Undefine>
+                      <IncludePath />
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>rw007_stm32_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\rw007-v2.1.0\example\rw007_stm32_port.c</FilePath>
+              <FileOption>
+                <FileArmAds>
+                  <Cads>
+                    <VariousControls>
+                      <MiscControls> </MiscControls>
+                      <Define />
+                      <Undefine> </Undefine>
+                      <IncludePath />
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SAL</GroupName>
+          <Files>
+            <File>
+              <FileName>netdev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\netdev\src\netdev.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>netdev_ipaddr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\netdev\src\netdev_ipaddr.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>dfs_net.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal\dfs_net\dfs_net.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>af_inet_at.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal\impl\af_inet_at.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>af_inet_lwip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal\impl\af_inet_lwip.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>net_netdb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal\socket\net_netdb.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>net_sockets.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal\socket\net_sockets.c</FilePath>
+            </File>
+          </Files>
+          <Files>
+            <File>
+              <FileName>sal_socket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal\src\sal_socket.c</FilePath>
             </File>
           </Files>
         </Group>

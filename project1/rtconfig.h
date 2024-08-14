@@ -66,12 +66,13 @@
 #define RT_USING_USER_MAIN
 #define RT_MAIN_THREAD_STACK_SIZE 2048
 #define RT_MAIN_THREAD_PRIORITY 10
+#define RT_USING_LEGACY
 #define RT_USING_MSH
 #define RT_USING_FINSH
 #define FINSH_USING_MSH
 #define FINSH_THREAD_NAME "tshell"
 #define FINSH_THREAD_PRIORITY 20
-#define FINSH_THREAD_STACK_SIZE 4096
+#define FINSH_THREAD_STACK_SIZE 2048
 #define FINSH_USING_HISTORY
 #define FINSH_HISTORY_LINES 5
 #define FINSH_USING_SYMTAB
@@ -86,12 +87,35 @@
 #define RT_USING_DFS
 #define DFS_USING_POSIX
 #define DFS_USING_WORKDIR
-#define DFS_FD_MAX 16
+#define DFS_FD_MAX 6
 #define RT_USING_DFS_V1
 #define DFS_FILESYSTEMS_MAX 4
 #define DFS_FILESYSTEM_TYPES_MAX 4
+#define RT_USING_DFS_ELMFAT
+
+/* elm-chan's FatFs, Generic FAT Filesystem Module */
+
+#define RT_DFS_ELM_CODE_PAGE 437
+#define RT_DFS_ELM_WORD_ACCESS
+#define RT_DFS_ELM_USE_LFN_3
+#define RT_DFS_ELM_USE_LFN 3
+#define RT_DFS_ELM_LFN_UNICODE_0
+#define RT_DFS_ELM_LFN_UNICODE 0
+#define RT_DFS_ELM_MAX_LFN 255
+#define RT_DFS_ELM_DRIVES 3
+#define RT_DFS_ELM_MAX_SECTOR_SIZE 4096
+#define RT_DFS_ELM_REENTRANT
+#define RT_DFS_ELM_MUTEX_TIMEOUT 3000
+/* end of elm-chan's FatFs, Generic FAT Filesystem Module */
 #define RT_USING_DFS_DEVFS
+#define RT_USING_DFS_ROMFS
 /* end of DFS: device virtual file system */
+#define RT_USING_FAL
+#define FAL_DEBUG_CONFIG
+#define FAL_DEBUG 1
+#define FAL_PART_HAS_TABLE_CFG
+#define FAL_USING_SFUD_PORT
+#define FAL_USING_NOR_FLASH_DEV_NAME "norflash0"
 
 /* Device Drivers */
 
@@ -107,11 +131,18 @@
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PWM
+#define RT_USING_RTC
+#define RT_USING_SDIO
+#define RT_SDIO_STACK_SIZE 512
+#define RT_SDIO_THREAD_PRIORITY 15
+#define RT_MMCSD_STACK_SIZE 1024
+#define RT_MMCSD_THREAD_PREORITY 22
+#define RT_MMCSD_MAX_PARTITION 16
 #define RT_USING_SPI
-#define RT_USING_AUDIO
-#define RT_AUDIO_REPLAY_MP_BLOCK_SIZE 4096
-#define RT_AUDIO_REPLAY_MP_BLOCK_COUNT 2
-#define RT_AUDIO_RECORD_PIPE_SIZE 2048
+#define RT_USING_SFUD
+#define RT_SFUD_USING_SFDP
+#define RT_SFUD_USING_FLASH_INFO_TABLE
+#define RT_SFUD_SPI_MAX_HZ 50000000
 #define RT_USING_WIFI
 #define RT_WLAN_DEVICE_STA_NAME "wlan0"
 #define RT_WLAN_DEVICE_AP_NAME "wlan1"
@@ -213,8 +244,8 @@
 #define RT_LWIP_UDP_PCB_NUM 4
 #define RT_LWIP_TCP_PCB_NUM 4
 #define RT_LWIP_TCP_SEG_NUM 40
-#define RT_LWIP_TCP_SND_BUF 8196
-#define RT_LWIP_TCP_WND 8196
+#define RT_LWIP_TCP_SND_BUF 4096
+#define RT_LWIP_TCP_WND 4096
 #define RT_LWIP_TCPTHREAD_PRIORITY 10
 #define RT_LWIP_TCPTHREAD_MBOX_SIZE 8
 #define RT_LWIP_TCPTHREAD_STACKSIZE 1024
@@ -283,6 +314,13 @@
 
 /* end of CYW43439 WiFi */
 /* end of Wi-Fi */
+#define PKG_USING_NETUTILS
+#define PKG_NETUTILS_NTP
+#define NETUTILS_NTP_HOSTNAME "cn.ntp.org.cn"
+#define NETUTILS_NTP_HOSTNAME2 "ntp.rt-thread.org"
+#define NETUTILS_NTP_HOSTNAME3 "edu.ntp.org.cn"
+#define PKG_USING_NETUTILS_LATEST_VERSION
+#define PKG_NETUTILS_VER_NUM 0x99999
 
 /* IoT Cloud */
 
@@ -356,6 +394,12 @@
 
 /* LVGL: powerful and easy-to-use embedded GUI library */
 
+#define PKG_USING_LVGL
+#define PKG_LVGL_THREAD_PRIO 20
+#define PKG_LVGL_THREAD_STACK_SIZE 4096
+#define PKG_LVGL_DISP_REFR_PERIOD 5
+#define PKG_LVGL_USING_V080311
+#define PKG_LVGL_VER_NUM 0x080311
 /* end of LVGL: powerful and easy-to-use embedded GUI library */
 
 /* u8g2: a monochrome graphic library */
@@ -371,6 +415,19 @@
 
 /* enhanced kernel services */
 
+#define PKG_USING_RT_VSNPRINTF_FULL
+#define PKG_VSNPRINTF_SUPPORT_DECIMAL_SPECIFIERS
+#define PKG_VSNPRINTF_SUPPORT_EXPONENTIAL_SPECIFIERS
+#define PKG_VSNPRINTF_SUPPORT_WRITEBACK_SPECIFIER
+#define PKG_VSNPRINTF_SUPPORT_LONG_LONG
+#define PKG_VSNPRINTF_CHECK_FOR_NUL_IN_FORMAT_SPECIFIER
+#define PKG_VSNPRINTF_INTEGER_BUFFER_SIZE 32
+#define PKG_VSNPRINTF_DECIMAL_BUFFER_SIZE 32
+#define PKG_VSNPRINTF_DEFAULT_FLOAT_PRECISION 6
+#define PKG_VSNPRINTF_MAX_INTEGRAL_DIGITS_FOR_DECIMAL 9
+#define PKG_VSNPRINTF_LOG10_TAYLOR_TERMS 4
+#define RT_VSNPRINTF_FULL_REPLACING_VSNPRINTF
+#define PKG_USING_RT_VSNPRINTF_FULL_LATEST_VERSION
 /* end of enhanced kernel services */
 
 /* acceleration: Assembly language or algorithmic acceleration packages */
@@ -392,6 +449,7 @@
 
 /* STM32 HAL & SDK Drivers */
 
+#define SDIO_MAX_FREQ 1000000
 /* end of STM32 HAL & SDK Drivers */
 
 /* Infineon HAL Packages */
@@ -492,6 +550,17 @@
 /* Onboard Peripheral Drivers */
 
 #define BSP_USING_USB_TO_USART
+#define BSP_USING_SRAM
+#define BSP_USING_ONBOARD_LCD
+#define BSP_USING_ONBOARD_LCD_PWM_BL
+#define BSP_USING_LVGL
+#define BSP_USING_SPI_FLASH
+#define BSP_USING_FS
+#define BSP_USING_SDCARD_FATFS
+#define BSP_USING_FS_AUTO_MOUNT
+#define BSP_USING_FLASH_FATFS
+#define BSP_USING_FLASH_FS_AUTO_MOUNT
+#define BSP_USING_FAL
 #define BSP_USING_RW007_WLAN
 #define BSP_USING_AHT21
 #define BSP_USING_AP3216C
@@ -502,6 +571,12 @@
 #define BSP_USING_GPIO
 #define BSP_USING_UART
 #define BSP_USING_UART1
+#define BSP_USING_UART2
+#define BSP_USING_UART3
+#define BSP_USING_PWM
+#define BSP_USING_PWM14
+#define BSP_USING_PWM14_CH1
+#define BSP_USING_ON_CHIP_FLASH
 #define BSP_USING_SPI
 #define BSP_USING_SPI2
 #define BSP_USING_I2C
@@ -511,6 +586,11 @@
 #define BSP_USING_I2C3
 #define BSP_I2C3_SCL_PIN 64
 #define BSP_I2C3_SDA_PIN 65
+#define BSP_USING_ONCHIP_RTC
+#define BSP_RTC_USING_LSE
+#define BSP_USING_SDIO
+#define BSP_USING_EXT_FMC_IO
+#define BSP_USING_FMC
 /* end of On-chip Peripheral Drivers */
 
 /* Board extended module Drivers */

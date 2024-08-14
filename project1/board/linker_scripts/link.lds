@@ -129,6 +129,16 @@ SECTIONS
         *(.bss.init)
     } > RAM1
     __bss_end = .;
+      .LVGLccm (NOLOAD)  : ALIGN(4)
+    {
+        . = ALIGN(4);
+        *(.LVGLccm)
+        *(.LVGLccm.*)
+        . = ALIGN(4);
+        __LVGLccm_free__ = .;
+    } > RAM2
+
+    _end = .;
 
     .MCUlcdgrambysram (NOLOAD) : ALIGN(4)
     {
@@ -140,6 +150,7 @@ SECTIONS
     } > MCUlcdgrambysram
 
     _end = .;
+  
 
     /* Stabs debugging sections.  */
     .stab          0 : { *(.stab) }

@@ -12,21 +12,29 @@
 #include <board.h>
 #include <rtthread.h>
 #include <drv_gpio.h>
+#include <drv_lcd.h>
 #ifndef RT_USING_NANO
 #include <rtdevice.h>
 #endif /* RT_USING_NANO */
-
+#include "fal.h"
 #define GPIO_LED_B    GET_PIN(F, 11)
 #define GPIO_LED_R    GET_PIN(F, 12)
+
+
+
 int main(void)
 {
-    rt_pin_mode(GPIO_LED_R, PIN_MODE_OUTPUT);
-    
-    while (1)
+       rt_pin_mode(GPIO_LED_R, PIN_MODE_OUTPUT);
+    rt_device_t rtc = rt_device_find("rtc");
+    if (rtc == RT_NULL)
     {
-        rt_pin_write(GPIO_LED_R, PIN_HIGH);
-        rt_thread_mdelay(500);
-        rt_pin_write(GPIO_LED_R, PIN_LOW);
-        rt_thread_mdelay(500);
+        rt_kprintf("rtc not found\n");
     }
+    else
+    {
+        rt_kprintf("rtc found\n");
+        rt_device_open(rtc, 0);
+    } 
+
+   
 }

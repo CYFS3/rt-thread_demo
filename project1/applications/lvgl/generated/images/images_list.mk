@@ -1,0 +1,1 @@
+GEN_CSRCS += _wendu_alpha_20x20.c _humi_alpha_20x20.c _taiyang_alpha_20x20.c

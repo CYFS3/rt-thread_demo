@@ -7,6 +7,7 @@ void wifi_event_handler(int event, struct rt_wlan_buff *buff, void *parameter)
 {
 	if (event == RT_WLAN_EVT_READY)
 	{
+		system("ntp_sync");
 		rt_sem_release(wifi_sem);
 	}
 }
@@ -15,7 +16,7 @@ void wifi_join_init(void * parameter)
 {
 	wifi_sem = rt_sem_create("wifi_join", 1, RT_IPC_FLAG_FIFO);
 	rt_sem_take (wifi_sem, RT_WAITING_FOREVER);
-	rt_thread_delay(1000);
+	rt_thread_delay(2000);
 	rt_wlan_register_event_handler(RT_WLAN_EVT_READY, wifi_event_handler, NULL);
 	rt_kprintf("wifi join\n");
 	system("wifi scan");    
@@ -33,5 +34,5 @@ int wifi_join(void)
 	}
 	return -RT_ERROR;
 }
-INIT_APP_EXPORT(wifi_join);
+//INIT_APP_EXPORT(wifi_join);
 
