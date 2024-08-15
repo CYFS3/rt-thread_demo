@@ -26,6 +26,10 @@
 
 参考：http://t.csdnimg.cn/Y6T2z
 
+效果：
+
+![text_converted](https://cdn.jsdelivr.net/gh/CYFS3/Typroa/202408152318612.gif)
+
 ## 4.lvgl
 
 lvgl界面由gui-guider生成

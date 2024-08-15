@@ -449,7 +449,7 @@
 
 /* STM32 HAL & SDK Drivers */
 
-#define SDIO_MAX_FREQ 800000
+#define SDIO_MAX_FREQ 500000
 /* end of STM32 HAL & SDK Drivers */
 
 /* Infineon HAL Packages */
