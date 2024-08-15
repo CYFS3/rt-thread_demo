@@ -14,7 +14,7 @@ extern const RGBColor_TypeDef GREEN;
 extern const RGBColor_TypeDef RED;
 extern const RGBColor_TypeDef BLUE;
 extern const RGBColor_TypeDef WHITE;
-
+void led_matrix_fill_test(uint8_t index);
 extern void Set_LEDColor(uint16_t LedId, RGBColor_TypeDef Color);
 extern void RGB_Reflash(void);
 extern void led_matrix_rst();

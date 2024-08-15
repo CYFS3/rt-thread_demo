@@ -3,10 +3,11 @@
 #include "mqtt_api.h"
 #include "aht21_read.h"
 #include "ap3216_read.h"
+#include "cJSON.h"
 char DEMO_PRODUCT_KEY[IOTX_PRODUCT_KEY_LEN + 1] = {0};
 char DEMO_DEVICE_NAME[IOTX_DEVICE_NAME_LEN + 1] = {0};
 char DEMO_DEVICE_SECRET[IOTX_DEVICE_SECRET_LEN + 1] = {0};
-
+void pop_up_entry(char * buf);
 void *HAL_Malloc(uint32_t size);
 void HAL_Free(void *ptr);
 void HAL_Printf(const char *fmt, ...);
@@ -15,7 +16,8 @@ int HAL_GetDeviceName(char device_name[IOTX_DEVICE_NAME_LEN + 1]);
 int HAL_GetDeviceSecret(char device_secret[IOTX_DEVICE_SECRET_LEN]);
 uint64_t HAL_UptimeMs(void);
 int HAL_Snprintf(char *str, const int len, const char *fmt, ...);
-
+void led_matrix_thread_create(void);
+void led_matrix_thread_exit(void);
 #define EXAMPLE_TRACE(fmt, ...)  \
 do \
 { \
@@ -31,11 +33,27 @@ static void example_message_arrive(void *pcontext, void *pclient, iotx_mqtt_even
     switch (msg->event_type) 
     {
         case IOTX_MQTT_EVENT_PUBLISH_RECEIVED:
-            /* print topic name and topic message */
-            EXAMPLE_TRACE("Message Arrived:");
-            EXAMPLE_TRACE("Topic  : %.*s", topic_info->topic_len, topic_info->ptopic);
-            EXAMPLE_TRACE("Payload: %.*s", topic_info->payload_len, topic_info->payload);
-            EXAMPLE_TRACE("\n");
+        {
+            cJSON * txt = cJSON_Parse(topic_info->payload);
+            cJSON * params = cJSON_GetObjectItem(txt,"txt");
+            if(params != NULL)
+            {
+                pop_up_entry(params->valuestring);
+            }
+            cJSON * led = cJSON_GetObjectItem(txt,"led");
+            if(led != NULL)
+            {
+                if(led->valueint == 1)
+                {
+                    led_matrix_thread_create();
+                }
+                else
+                {
+                    led_matrix_thread_exit();
+                }
+            }
+            cJSON_Delete(txt);
+        }
             break;
         default:
             break;
@@ -45,7 +63,7 @@ static void example_message_arrive(void *pcontext, void *pclient, iotx_mqtt_even
 static int example_subscribe(void *handle)
 {
     int res = 0;
-    const char *fmt = "/sys/%s/%s/thing/event/property/post";
+    const char *fmt = "/a1Ayu4gbdUP/rt_dev/user/get";
     char *topic = NULL;
     int topic_len = 0;
 
@@ -132,12 +150,12 @@ void mqtt_example_main(void *parameter)
         
     }
 
-    // res = example_subscribe(pclient);
-    // if (res < 0) 
-    // {
-    //     IOT_MQTT_Destroy(&pclient);
+    res = example_subscribe(pclient);
+    if (res < 0) 
+    {
+        IOT_MQTT_Destroy(&pclient);
         
-    // }
+    }
     char payload[256];
     while (ap3216_mut == RT_NULL || ant10_mut == RT_NULL)
     {

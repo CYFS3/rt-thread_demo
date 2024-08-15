@@ -126,5 +126,32 @@
             android:fontFamily="@font/test"
             android:textSize="24sp" />
     </LinearLayout>
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="10"
+        android:hint="输入提醒内容"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:text="提醒"
+        android:textSize="24sp"
+        android:textColor="#FF08fa87"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_led"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:text="关"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        android:textColor="#FF08fa87"/>
 
 </LinearLayout>

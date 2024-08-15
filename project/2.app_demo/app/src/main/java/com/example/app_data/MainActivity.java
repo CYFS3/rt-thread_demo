@@ -2,6 +2,8 @@ package com.example.app_data;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView humi;
     private TextView light;
     private TextView person;
+    int flag = 0;
 
 
     @Override
@@ -42,6 +46,50 @@ public class MainActivity extends AppCompatActivity {
         humi = findViewById(R.id.humi);
         light = findViewById(R.id.lux);
         person = findViewById(R.id.person);
+        EditText et_content = findViewById(R.id.et_content);
+        findViewById(R.id.btn_set).setOnClickListener(v -> {
+            //编码utf-8
+            String str = et_content.getText().toString();
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("txt", str);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            // 发布消息
+            try {
+                client.publish("/a1Ayu4gbdUP/app_dev/user/update", jsonObject.toString().getBytes(), 0, false);
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+    });
+        Button but_led = findViewById(R.id.btn_led);
+        but_led.setOnClickListener(v -> {
+            //编码utf-8
+            JSONObject jsonObject = new JSONObject();
+           if(flag == 1) {
+               try {
+                   jsonObject.put("led", 0);
+                    but_led.setText("关");
+               } catch (JSONException e) {
+                   e.printStackTrace();
+               }
+           }else {
+               try {
+                   jsonObject.put("led", 1);
+                     but_led.setText("开");
+               } catch (JSONException e) {
+                   e.printStackTrace();
+               }
+           }
+           flag = 1 - flag;
+            // 发布消息
+            try {
+                client.publish("/a1Ayu4gbdUP/app_dev/user/update", jsonObject.toString().getBytes(), 0, false);
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void link_mqtt() {

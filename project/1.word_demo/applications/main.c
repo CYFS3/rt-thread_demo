@@ -12,19 +12,20 @@
 #include <board.h>
 #include <rtthread.h>
 #include <drv_gpio.h>
-#include <drv_lcd.h>
 #ifndef RT_USING_NANO
 #include <rtdevice.h>
+#include <drv_matrix_led.h>
 #endif /* RT_USING_NANO */
 #include "fal.h"
 #define GPIO_LED_B    GET_PIN(F, 11)
 #define GPIO_LED_R    GET_PIN(F, 12)
-
+#define PIN_BEEP        GET_PIN(B, 0)  
 
 
 int main(void)
 {
-       rt_pin_mode(GPIO_LED_R, PIN_MODE_OUTPUT);
+    led_matrix_rst();
+    rt_pin_mode(GPIO_LED_R, PIN_MODE_OUTPUT);
     rt_device_t rtc = rt_device_find("rtc");
     if (rtc == RT_NULL)
     {
@@ -35,6 +36,6 @@ int main(void)
         rt_kprintf("rtc found\n");
         rt_device_open(rtc, 0);
     } 
-
+    rt_pin_mode(PIN_BEEP, PIN_MODE_OUTPUT);
    
 }

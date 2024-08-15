@@ -244,59 +244,6 @@ void led_matrix_fill_test(uint8_t index)
     }
 }
 
-void led_matrix_test1()
-{
-    rt_memset(RGB_Data, 0x00, sizeof(RGB_Data));
-    Set_LEDColor(0, RED);
-    Set_LEDColor(1, GREEN);
-    Set_LEDColor(2, BLUE);
-    Set_LEDColor(3, RED);
-    Set_LEDColor(4, GREEN);
-    Set_LEDColor(5, BLUE);
-    Set_LEDColor(6, RED);
-    Set_LEDColor(7, GREEN);
-    Set_LEDColor(8, BLUE);
-    Set_LEDColor(9, WHITE);
-    // led_matrix_rst();
-    RGB_Reflash();
-}
-MSH_CMD_EXPORT(led_matrix_test1, Test led matrix on board)
-
-void led_matrix_test2()
-{
-    rt_memset(RGB_Data, 0x00, sizeof(RGB_Data));
-    Set_LEDColor(0, BLUE);
-    Set_LEDColor(1, RED);
-    Set_LEDColor(2, GREEN);
-    Set_LEDColor(3, BLUE);
-    Set_LEDColor(4, RED);
-    Set_LEDColor(5, GREEN);
-    Set_LEDColor(6, BLUE);
-    Set_LEDColor(7, RED);
-    Set_LEDColor(8, GREEN);
-    Set_LEDColor(9, RED);
-
-    Set_LEDColor(14, GREEN);
-    Set_LEDColor(15, GREEN);
-    Set_LEDColor(16, BLUE);
-    Set_LEDColor(17, RED);
-    Set_LEDColor(18, WHITE);
-
-    RGB_Reflash();
-}
-MSH_CMD_EXPORT(led_matrix_test2, Test led matrix on board)
-
-void led_matrix_test3()
-{
-    for (uint8_t i = 0; i < 4; i++)
-    {
-        led_matrix_fill_test(i);
-        rt_thread_mdelay(1000);
-    }
-    led_matrix_rst();
-}
-
-MSH_CMD_EXPORT(led_matrix_test3, Test led matrix on board)
 
 void led_matrix_show_color(uint8_t r, uint8_t g, uint8_t b)
 {
