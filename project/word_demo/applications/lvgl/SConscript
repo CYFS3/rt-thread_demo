@@ -1,0 +1,28 @@
+import rtconfig
+
+from building import *
+
+cwd = GetCurrentDir()
+CPPPATH = [cwd, str(Dir('#'))]
+CPPDEFINES = ['']
+
+include_path = [ cwd,
+    os.path.join(cwd,"custom"),
+    os.path.join(cwd,"generated"),
+    os.path.join(cwd,"generated/guider_customer_fonts"),
+    os.path.join(cwd,"generated/guider_fonts"),
+    os.path.join(cwd,"generated/images")
+]
+
+src = Glob('*.c')
+
+src += Glob('custom/*.c')
+src += Glob('generated/*.c')
+src += Glob('generated/guider_customer_fonts/*.c')
+src += Glob('generated/guider_fonts/*.c')
+src += Glob('generated/images/*.c')
+src += Glob('./*.c')
+
+group = DefineGroup('GUI-Guider-demo', src, depend = [''], CPPPATH = include_path, CPPDEFINES=CPPDEFINES)
+
+Return('group')
