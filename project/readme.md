@@ -28,7 +28,7 @@
 
 效果：
 
-![text_converted](https://cdn.jsdelivr.net/gh/CYFS3/Typroa/202408152318612.gif)
+![](./figures/data.gif)
 
 ## 4.lvgl
 
@@ -81,7 +81,7 @@ Return('group')
 
 效果：
 
-![text_converted (1)](https://cdn.jsdelivr.net/gh/CYFS3/Typroa/202408160949610.gif)
+![text_converted (1)](./figures/word.gif)
 
 
 
