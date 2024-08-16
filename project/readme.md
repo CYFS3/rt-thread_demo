@@ -75,3 +75,27 @@ Return('group')
 
 用于读取sd卡中的单词
 
+## 7.单词
+
+可通过按钮切换单词
+
+效果：
+
+![text_converted (1)](https://cdn.jsdelivr.net/gh/CYFS3/Typroa/202408160949610.gif)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
