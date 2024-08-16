@@ -83,19 +83,11 @@ Return('group')
 
 ![text_converted (1)](./figures/word.gif)
 
+## 8.app
+
+可以获取传感器数据、控制led_matrix 和发送提醒
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+![app](figures/app.jpg)
 
